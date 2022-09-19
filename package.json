@@ -1,0 +1,31 @@
+{
+  "name": "lotr",
+  "version": "1.0.0",
+  "description": "A TypeScript SDK for the Lord of the rings API",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "axios": "^0.27.2",
+    "dotenv": "^16.0.0",
+    "jest": "^27.5.1"
+  },
+  "devDependencies": {
+    "@types/jest": "^27.4.1",
+    "jest": "^27.5.1",
+    "ts-jest": "^27.0.3",
+    "ts-node": "^10.8.2",
+    "typescript": "^4.4.4"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/liorEhrlich/lord-of-the-rings-sdk.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/liorEhrlich/lord-of-the-rings-sdk/issues"
+  },
+  "homepage": "https://github.com/liorEhrlich/lord-of-the-rings-sdk#readme"
+}
