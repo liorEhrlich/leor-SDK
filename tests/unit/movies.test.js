@@ -13,5 +13,6 @@ test("test get movies function", async () => {
   };
 
   const testClient = new Controller("movies", mock);
-  return testClient.get().then((data) => expect(data).toEqual(movies));
+  const data = await  testClient.get()
+  return expect(data).toEqual(movies);
 });

@@ -13,5 +13,6 @@ test("test get characters function", async () => {
   };
 
   const testClient = new Controller("characters", mock);
-  return testClient.get().then((data) => expect(data).toEqual(characters));
+  const data = await  testClient.get()
+  return expect(data).toEqual(characters);
 });
