@@ -33,3 +33,11 @@ test("test get book chapter call", async () => {
 
   expect(chapters).toEqual(EXPECTED_CHAPTERS_BY_BOOK);
 });
+
+test("test get books with limit call", async () => {
+  const data = await testClient.books.get({ limit: 1 });
+  const parsedData = JSON.parse(data);
+  const book = parsedData.docs;
+
+  expect(book.length).toEqual(1);
+});

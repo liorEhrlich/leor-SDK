@@ -5,7 +5,39 @@ class Controller {
     this.child_entity = child_entity;
   }
 
-  #create_url_path_from_options(options) {
+  /**
+   * Create url query params from options
+   * @param {
+   * limit?: number
+   * page?: number
+   * offset?: number
+   *  } options - Endpoint options object
+   * @returns {string} - query params
+   */
+  #create_query_params(options) {
+    if (!options || (!options.limit && !options.page && !options.offset)) {
+      return "";
+    }
+    const { limit, page, offest } = options;
+
+    const searchParams = new URLSearchParams({
+      ...(limit && { limit }),
+      ...(page && { page }),
+      ...(offest && { offest }),
+    });
+
+    return "?" + searchParams.toString();
+  }
+
+  /**
+   * Create url from options
+   * @param {
+   * id?: string
+   * includeChild?: boolean
+   *  } options - Endpoint options object
+   * @returns {string} - endpoint url
+   */
+  #create_url_path(options) {
     if (!options || !options.id) {
       return this.name;
     }
@@ -27,11 +59,15 @@ class Controller {
    * @param {
    * id?: string
    * includeChild?: boolean
-   *  } - API response data object
+   * limit?: number
+   * page?: number
+   * offset?: number
+   *  } options - Endpoint options object
    * @returns {Object} - API response data object
    */
   async get(options) {
-    const url = this.#create_url_path_from_options(options);
+    const url =
+      this.#create_url_path(options) + this.#create_query_params(options);
     const { data } = await this.http_client.get(url);
     return data;
   }
