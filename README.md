@@ -74,6 +74,12 @@ Method  | Response
 ``` books.get({ limit: 1 }) ```  | Limit number of results
 ``` books.get({ offset: 1 }) ```  | Get results with offset
 ``` books.get({ page: 1 }) ```  | Get first page of results
+
+## Sorting
+ 
+Method  | Response
+------------- | -------------
+``` books.get({ sort: {field: string, dir: 'asc'|'desc' } }) ```  | Sort by field in ascending or descending order
   
 <br />
 
