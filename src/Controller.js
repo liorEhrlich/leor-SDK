@@ -16,23 +16,33 @@ class Controller {
    * limit?: number
    * page?: number
    * offset?: number
+   * sort?: {
+   *  field: string,
+   *  dir: 'asc' | 'desc'
+   * }
    *  } options - Endpoint options object
    * @returns {string} - query params
    */
   #create_query_params(options) {
-    if (!options || (!options.limit && !options.page && !options.offset)) {
+    if (
+      !options ||
+      (!options.limit && !options.page && !options.offset && !options.sort)
+    ) {
       console.info("No query params were specified. Returning base URL.");
       return "";
     }
-    const { limit, page, offest } = options;
+    const { limit, page, offest, sort } = options;
 
     const searchParams = new URLSearchParams({
       ...(limit && { limit }),
       ...(page && { page }),
       ...(offest && { offest }),
+      ...(sort && { sort: `${sort.field}:${sort.dir}` }),
     });
 
-    return "?" + searchParams.toString();
+    const queryParams = "?" + searchParams.toString()
+    console.info("Return query params: ", queryParams);
+    return queryParams;
   }
 
   /**
@@ -72,7 +82,11 @@ class Controller {
    * limit?: number
    * page?: number
    * offset?: number
-   *  } options - Endpoint options object
+   * sort?: {
+   *  field: string,
+   *  dir: 'asc' | 'desc'
+   *  }  
+   * } options - Endpoint options object
    * @returns {Object} - API response data object
    */
   async get(options) {

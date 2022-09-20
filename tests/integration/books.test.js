@@ -3,6 +3,7 @@ const { EXPECTED_BOOKS, EXPECTED_CHAPTERS_BY_BOOK } = require("./constants");
 
 const TEST_SUBJECT_ID = "5cf58077b53e011a64671583";
 const TEST_SUBJECT_NAME = "The Two Towers";
+const FIRST_SUBJECT_ASC = "The Fellowship Of The Ring";
 
 const { API_KEY } = process.env;
 const testClient = new TestClient(API_KEY);
@@ -40,4 +41,24 @@ test("test get books with limit call", async () => {
   const book = parsedData.docs;
 
   expect(book.length).toEqual(1);
+});
+
+test("test get books sorted ascending by name", async () => {
+  const data = await testClient.books.get({
+    sort: { field: "name", dir: "asc" },
+  });
+  const parsedData = JSON.parse(data);
+  const bookName = parsedData.docs[0].name;
+
+  expect(bookName).toEqual(FIRST_SUBJECT_ASC);
+});
+
+test("test get books sorted descending by name", async () => {
+  const data = await testClient.books.get({
+    sort: { field: "name", dir: "desc" },
+  });
+  const parsedData = JSON.parse(data);
+  const bookName = parsedData.docs[0].name;
+
+  expect(bookName).toEqual(TEST_SUBJECT_NAME);
 });
