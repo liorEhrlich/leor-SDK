@@ -35,6 +35,18 @@ getAllLOTRBooks();
 
 <br />
 
+
+ # 🧪 Tests
+
+```shell
+
+npm run test
+
+```
+
+<br />
+
+
  # 📚 Supported features
  
  ## The available routes
@@ -63,6 +75,8 @@ Method  | Response
 ``` books.get({ offset: 1 }) ```  | Get results with offset
 ``` books.get({ page: 1 }) ```  | Get first page of results
   
+<br />
+
 # 🗺 Roadmap
 
 This is Lord of the rings SDK at its first version. There are still many features ahead.
