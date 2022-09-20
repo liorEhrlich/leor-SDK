@@ -5,10 +5,15 @@ class Controller {
   }
   /**
    * Get request function
+   * @param {
+   * id?: string
+   *  } - API response data object
    * @returns {Object} - API response data object
    */
-  async get() {
-    const { data } = await this.http_client.get(this.name);
+  async get(options) {
+    const { name, http_client } = this;
+    const url = options?.id ? name + "/" + options.id : name;
+    const { data } = await http_client.get(url);
     return data;
   }
 }
