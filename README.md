@@ -79,7 +79,7 @@ Method  | Response
  
 Method  | Response
 ------------- | -------------
-``` books.get({ sort: {field: string, dir: 'asc'|'desc' } }) ```  | Sort by field in ascending or descending order
+``` books.get({ sort: {field: string, dir: 'asc' or 'desc' } }) ```  | Sort by field in ascending or descending order
   
 <br />
 
