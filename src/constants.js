@@ -3,4 +3,6 @@ module.exports = {
   BOOKS_ENDPOINT: "book",
   MOVIES_ENDPOINT: "movie",
   CHARACTERS_ENDPOINT: "character",
+  QUOTE_ENDPOINT: "quote",
+  CHAPTER_ENDPOINT: "chapter",
 };

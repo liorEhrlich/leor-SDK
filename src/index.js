@@ -6,6 +6,8 @@ const {
   BOOKS_ENDPOINT,
   MOVIES_ENDPOINT,
   CHARACTERS_ENDPOINT,
+  QUOTE_ENDPOINT,
+  CHAPTER_ENDPOINT,
 } = require("./constants");
 const { default: Controller } = require("./Controller");
 
@@ -18,18 +20,28 @@ class Client {
       },
     });
 
-    this.books_controller = new Controller(
+    this.books = new Controller(
       BOOKS_ENDPOINT,
       this.axiosClient
     );
 
-    this.movies_controller = new Controller(
+    this.movies = new Controller(
       MOVIES_ENDPOINT,
       this.axiosClient
     );
 
-    this.characters_controller = new Controller(
+    this.characters = new Controller(
       CHARACTERS_ENDPOINT,
+      this.axiosClient
+    );
+
+    this.quote = new Controller(
+      QUOTE_ENDPOINT,
+      this.axiosClient
+    );
+
+    this.chapter = new Controller(
+      CHAPTER_ENDPOINT,
       this.axiosClient
     );
   }
