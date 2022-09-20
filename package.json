@@ -1,7 +1,7 @@
 {
-  "name": "lotr",
+  "name": "leor-lotr",
   "version": "1.0.0",
-  "description": "A TypeScript SDK for the Lord of the rings API",
+  "description": "A JavaScript SDK for the Lord of the rings API",
   "main": "index.js",
   "scripts": {
     "test": "jest"
