@@ -1,36 +1,37 @@
 const { Axios } = require("axios");
+require("dotenv").config();
+
 const {
   LOTR_BASE_API,
   BOOKS_ENDPOINT,
   MOVIES_ENDPOINT,
   CHARACTERS_ENDPOINT,
 } = require("./constants");
+const { default: Controller } = require("./Controller");
 
 class Client {
   constructor(clientAuthKey) {
-    this.authKey = clientAuthKey;
-    this.init_axios();
-  }
-
-  init_axios() {
     this.axiosClient = new Axios({
       baseURL: LOTR_BASE_API,
       headers: {
-        Authorization: `Bearer ${this.authKey}`,
+        Authorization: `Bearer ${clientAuthKey}`,
       },
     });
-  }
 
-  async getAllBooks() {
-    return this.axiosClient.get(BOOKS_ENDPOINT);
-  }
+    this.books_controller = new Controller(
+      BOOKS_ENDPOINT,
+      this.axiosClient
+    );
 
-  async getAllMovies() {
-    return this.axiosClient.get(MOVIES_ENDPOINT);
-  }
+    this.movies_controller = new Controller(
+      MOVIES_ENDPOINT,
+      this.axiosClient
+    );
 
-  async getAllCharacters() {
-    return this.axiosClient.get(CHARACTERS_ENDPOINT);
+    this.characters_controller = new Controller(
+      CHARACTERS_ENDPOINT,
+      this.axiosClient
+    );
   }
 }
 

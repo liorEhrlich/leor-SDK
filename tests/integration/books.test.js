@@ -5,7 +5,7 @@ const { API_KEY } = process.env;
 const testClient = new TestClient(API_KEY);
 
 test("test books call", async () => {
-  const data = await testClient.getAllBooks();
+  const data = await testClient.books_controller.get()
   const parsedData = JSON.parse(data);
   const bookNames = parsedData.docs.map(({ name }) => name);
 

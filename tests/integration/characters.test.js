@@ -5,7 +5,7 @@ const { API_KEY } = process.env;
 const testClient = new TestClient(API_KEY);
 
 test("test characters call", async () => {
-  const data = await testClient.getAllCharacters();
+  const data = await testClient.characters_controller.get();
   const parsedData = JSON.parse(data);
   const characters = parsedData.docs.map(({ name }) => name);
 
