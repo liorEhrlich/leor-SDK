@@ -22,28 +22,25 @@ class Client {
 
     this.books = new Controller(
       BOOKS_ENDPOINT,
-      this.axiosClient
+      this.axiosClient,
+      CHAPTER_ENDPOINT
     );
 
     this.movies = new Controller(
       MOVIES_ENDPOINT,
-      this.axiosClient
+      this.axiosClient,
+      QUOTE_ENDPOINT
     );
 
     this.characters = new Controller(
       CHARACTERS_ENDPOINT,
-      this.axiosClient
+      this.axiosClient,
+      QUOTE_ENDPOINT
     );
 
-    this.quote = new Controller(
-      QUOTE_ENDPOINT,
-      this.axiosClient
-    );
+    this.quote = new Controller(QUOTE_ENDPOINT, this.axiosClient);
 
-    this.chapter = new Controller(
-      CHAPTER_ENDPOINT,
-      this.axiosClient
-    );
+    this.chapter = new Controller(CHAPTER_ENDPOINT, this.axiosClient);
   }
 }
 
