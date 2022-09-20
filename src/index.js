@@ -13,6 +13,8 @@ const { default: Controller } = require("./Controller");
 
 class Client {
   constructor(clientAuthKey) {
+    if (!clientAuthKey) throw new Error("LOTR client must include API Key");
+    
     this.axiosClient = new Axios({
       baseURL: LOTR_BASE_API,
       headers: {
